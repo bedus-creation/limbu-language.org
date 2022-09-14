@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TranslationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return inertia('front/Index');
 });
+
+Route::get("/translations", [TranslationController::class, "index"])->name("translations.index");
+Route::get("/translations/create", [TranslationController::class, "create"])->name("translations.create");
+Route::get("/translations/{translation}", [TranslationController::class, "edit"])->name("translations.edit");
+Route::post("/translations", [TranslationController::class, "store"])->name("translations.store");
