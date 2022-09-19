@@ -1,19 +1,25 @@
 <template>
     <div class="container mx-auto mt-20">
-        <form @submit="submit">
-            <label>In English</label>
-            <textarea v-model="form.english"
-                      class="z-100 w-full text-2xl h-36 border focus:ring-0 focus:outline-none"/>
+        <form @submit.prevent="submit">
+            <div class="mb-4">
+                <label>In English</label>
+                <textarea v-model="form.english"
+                          class="z-100 w-full text-2xl h-36 border focus:ring-0 focus:outline-none"/>
+                <InputError :message="form.errors.english"/>
+            </div>
 
-            <label>In Limbu</label>
-            <textarea :value="editor.model.unicode"
-                      class="z-100 w-full text-2xl h-36 border focus:ring-0 focus:outline-none"
-                      @input="editor.handleInput"/>
+            <div class="mb-4">
+                <label>In Limbu</label>
+                <InputLimbu v-model="form.limbu"/>
+                <InputError :message="form.errors.limbu"/>
+            </div>
 
-            {{ editor.model.original }}
-
-            <textarea v-model="form.pronunciation"
-                      class="z-100 w-full text-2xl h-36 border focus:ring-0 focus:outline-none"/>
+            <div class="mb-4">
+                <label>Pronunciation</label>
+                <textarea v-model="form.pronunciation"
+                          class="z-100 w-full text-2xl h-36 border focus:ring-0 focus:outline-none"/>
+                <InputError :message="form.errors.pronunciation"/>
+            </div>
 
             <div class="flex justify-end">
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
@@ -23,17 +29,23 @@
 </template>
 
 <script lang="ts">
-    import useEditor from "@/scripts/keyboard/editor.js"
+    import InputError from "@/views/components/forms/InputError.vue"
+    import InputLimbu from "@/views/components/forms/InputLimbu.vue"
     import { useForm } from "@inertiajs/inertia-vue3"
     import { defineComponent, PropType, watch, watchEffect } from "vue"
     import Layout from "../../../layouts/default.vue"
 
     export default defineComponent({
+        components: { InputLimbu, InputError },
         layout: Layout,
 
         props: {
             translation: {
-                type: Object as PropType<{ english: String, limbu: String, pronunciation: String }>,
+                type: Object as PropType<{
+                    id: Number,
+                    english: String, limbu: String,
+                    pronunciation: String
+                }>,
                 required: true,
             },
         },
@@ -44,29 +56,20 @@
                 limbu: "",
                 pronunciation: "",
             })
-
-            const editor = useEditor()
-
+            
             watch(() => props.translation, () => {
                 form.english = props.translation.english
-                editor.model.unicode = props.translation.limbu
-                editor.model.original = props.translation.pronunciation
+                form.limbu = props.translation.limbu
+                form.pronunciation = props.translation.pronunciation
             }, { immediate: true, deep: true })
 
-            watchEffect(() => {
-                form.limbu = editor.model.unicode
-            })
-
             const submit = () => {
-                form.post("/translations", {
-                    onSuccess: (page) => {form.reset()},
-                })
+                form.put(`/translations/${props.translation.id}`)
             }
 
             return {
                 form,
                 submit,
-                editor,
             }
         },
     })

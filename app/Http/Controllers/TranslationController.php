@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TranslationStoreRequest;
+use App\Http\Requests\TranslationUpdateRequest;
 use App\Models\Translation;
 use Illuminate\Http\Request;
 
@@ -25,7 +27,7 @@ class TranslationController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(TranslationStoreRequest $request)
     {
         Translation::query()->create($request->all());
 
@@ -41,7 +43,7 @@ class TranslationController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(TranslationUpdateRequest $request, $id)
     {
         Translation::query()
             ->findOrFail($id)
