@@ -22,14 +22,13 @@ export default function useEditor() {
         return translate(data, 1, 0)
     }
 
-    const handleInput = (event) => {
-        const string = event.target.value
-        model.original = reverseTranslate(string)
+    const setData = (data) => {
+        model.original = reverseTranslate(data)
         model.unicode = translate(model.original)
     }
 
     return {
         model,
-        handleInput,
+        setData,
     }
 }
