@@ -1011,6 +1011,11 @@ tailwindcss@^3.1.8:
     quick-lru "^5.1.1"
     resolve "^1.22.1"
 
+tiny-emitter@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/tiny-emitter/-/tiny-emitter-2.1.0.tgz#1d1a56edfc51c43e863cbb5382a72330e3555423"
+  integrity sha512-NB6Dk1A9xgQPMoGqC5CVXn123gWyte215ONT5Pp5a0yt4nlEoO1ZWeCwpncaekPHXO60i47ihFnZPiRPjRMq4Q==
+
 to-regex-range@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/to-regex-range/-/to-regex-range-5.0.1.tgz#1648c44aae7c8d988a326018ed72f5b4dd0392e4"
@@ -1052,6 +1057,13 @@ vite@^3.1.0:
     rollup "~2.78.0"
   optionalDependencies:
     fsevents "~2.3.2"
+
+vue3-headless-flash@^0.1.46:
+  version "0.1.46"
+  resolved "https://registry.yarnpkg.com/vue3-headless-flash/-/vue3-headless-flash-0.1.46.tgz#effc594e2dcc31f434e439589df91904e81d7826"
+  integrity sha512-6AWYlGvooLmEe/koC4ePid+OhbtEECZD5Uxzc5zCNzIPcPsPp/VerJiN5UzdGAe4enDDT7c+YBgzDsZZkutveg==
+  dependencies:
+    tiny-emitter "^2.1.0"
 
 vue@^3.2.36:
   version "3.2.36"
