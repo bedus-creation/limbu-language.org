@@ -1,6 +1,6 @@
 <template>
  <textarea :value="editor.model.unicode"
-           class="z-100 w-full text-2xl h-36 border focus:ring-0 focus:outline-none"
+           class="font-limbu z-100 w-full text-2xl h-36 border focus:ring-0 focus:outline-none"
            @input="handleInput"/>
 </template>
 
