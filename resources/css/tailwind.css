@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: sirijonga;
-    src: url(../fonts/sirijonga.ttf);
+    font-family: "notolimbu";
+    src: url(../fonts/noto-sans-limbu.ttf);
 }

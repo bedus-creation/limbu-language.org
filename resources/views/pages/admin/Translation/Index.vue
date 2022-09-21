@@ -2,7 +2,7 @@
     <div>
         <div v-for="item in $page.props.translations">
             {{ item.english }}
-            {{ item.limbu }}
+            <span class="font-limbu">{{ item.limbu }}</span>
             <a :href="`/translations/${item.id}`">Edit</a>
         </div>
     </div>
