@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-for="item in $page.props.translations">
+        <div v-for="item in $page.props.translations?.data">
             {{ item.english }}
             <span class="font-limbu">{{ item.limbu }}</span>
             <a :href="`/translations/${item.id}`">Edit</a>
@@ -8,10 +8,10 @@
     </div>
 </template>
 
-<script lang="ts">
-    import { defineComponent } from "vue"
-    import Layout from "../../../layouts/default.vue"
-    export default defineComponent({
-        layout: Layout,
-    })
+<script setup lang="ts">
+import Layout from "../../../layouts/default.vue"
+
+defineOptions({
+    layout: Layout,
+})
 </script>
