@@ -85,9 +85,6 @@ export default defineComponent({
         const submit = () => {
             form.put(`/translations/${props.translation.id}`, {
                 preserveState: true,
-                onSuccess:()=>{
-
-                }
             })
         }
 

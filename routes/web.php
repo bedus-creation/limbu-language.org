@@ -23,8 +23,8 @@ Route::get('/', function () {
         ->whereNull('limbu')
         ->first();
 
-    $nextTranslateLink = route('translations.edit', $nextTranslate->id);
-
+    $nextTranslateLink = route('translations.edit', $nextTranslate->id, false);
+    
     return inertia('front/Index', [
         'limbu'   => $translation?->limbu,
         'english' => $english,
