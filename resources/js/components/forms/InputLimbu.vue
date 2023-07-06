@@ -1,5 +1,6 @@
 <template>
  <textarea :value="editor.model.unicode"
+           placeholder="Enter the limbu translation here"
            class="font-limbu z-100 w-full text-2xl h-36 border rounded focus:ring-0 focus:outline-none"
            @input="handleInput"/>
 </template>
