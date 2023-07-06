@@ -38,11 +38,11 @@
 </template>
 
 <script lang="ts">
-    import InputError from "@/views/components/forms/InputError.vue"
-    import InputLimbu from "@/views/components/forms/InputLimbu.vue"
-    import { useForm } from "@inertiajs/inertia-vue3"
+    import InputError from "@/components/forms/InputError.vue"
+    import InputLimbu from "@/components/forms/InputLimbu.vue"
+    import { useForm } from '@inertiajs/vue3'
     import { defineComponent } from "vue"
-    import Layout from "../../../layouts/default.vue"
+    import Layout from "@/Layouts/Default.vue"
 
     export default defineComponent({
         components: { InputLimbu, InputError },

@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-    import useEditor from "@/scripts/keyboard/editor.js"
+    import useEditor from "@/Utils/keyboard/editor.js"
     import { watchEffect } from "vue"
     const editor = useEditor()
 

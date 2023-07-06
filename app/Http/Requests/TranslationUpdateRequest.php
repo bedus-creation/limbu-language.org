@@ -16,7 +16,7 @@ class TranslationUpdateRequest extends FormRequest
         return [
             "english"       => "required|string|max:500",
             "limbu"         => "required|string|max:500",
-            "pronunciation" => "required|string|max:500",
+            "pronunciation" => "nullable|string|max:500",
         ];
     }
 }
