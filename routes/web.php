@@ -24,7 +24,7 @@ Route::get('/', function () {
         ->first();
 
     $nextTranslateLink = route('translations.edit', $nextTranslate->id, false);
-    
+
     return inertia('front/Index', [
         'limbu'   => $translation?->limbu,
         'english' => $english,

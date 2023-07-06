@@ -1,18 +1,18 @@
 <template>
-    <div class="container mx-auto mt-20">
+    <div class="container mx-auto mt-20 px-6">
         <form @submit.prevent="submit">
-            <div class="grid grid-cols-3 gap-2">
+            <div class="lg:grid grid-cols-3 gap-2">
+                <div class="mb-4">
+                    <label>In Limbu</label>
+                    <InputLimbu v-model="form.limbu"/>
+                    <InputError :message="form.errors.limbu"/>
+                </div>
+
                 <div class="mb-4">
                     <label>In English</label>
                     <textarea v-model="form.english"
                               class="z-100 w-full text-2xl h-36 border rounded focus:ring-0 focus:outline-none"/>
                     <InputError :message="form.errors.english"/>
-                </div>
-
-                <div class="mb-4">
-                    <label>In Limbu</label>
-                    <InputLimbu v-model="form.limbu"/>
-                    <InputError :message="form.errors.limbu"/>
                 </div>
 
                 <div class="mb-4">

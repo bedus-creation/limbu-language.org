@@ -22,7 +22,7 @@
         <div v-if="nextTranslateLink" class="flex justify-center">
             <Link :href="nextTranslateLink"
                   class="text-center bg-blue-500 px-6 py-3 rounded text-white">
-                Help use Translatep
+                Help use Translate
             </Link>
         </div>
 
