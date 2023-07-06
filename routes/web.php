@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TranslationController;
+use App\Models\Translation;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return inertia('front/Index');
+    $english     = request()->input('english');
+    $translation = Translation::query()->where('english', 'like', "%$english%")->first();
+
+    $nextTranslate = Translation::query()
+        ->whereNull('limbu')
+        ->first();
+
+    $nextTranslateLink = route('translations.edit', $nextTranslate->id);
+
+    return inertia('front/Index', [
+        'limbu'   => $translation?->limbu,
+        'english' => $english,
+        "nextTranslateLink" => $nextTranslateLink
+    ]);
 });
 
 Route::get("/translations", [TranslationController::class, "index"])->name("translations.index");
@@ -23,3 +37,5 @@ Route::get("/translations/create", [TranslationController::class, "create"])->na
 Route::post("/translations", [TranslationController::class, "store"])->name("translations.store");
 Route::get("/translations/{translation}", [TranslationController::class, "edit"])->name("translations.edit");
 Route::put("/translations/{translation}", [TranslationController::class, "update"])->name("translations.update");
+
+Route::get('translation-exports', [\App\Http\Controllers\TranslationExportController::class, 'index']);

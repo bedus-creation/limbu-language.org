@@ -10,9 +10,8 @@
     "require": {
         "php": "^8.0.2",
         "guzzlehttp/guzzle": "^7.2",
-        "inertiajs/inertia-laravel": "^0.6.3",
-        "innocenzi/laravel-vite": "0.2.*",
-        "laravel/framework": "^9.19",
+        "inertiajs/inertia-laravel": "^0.6.9",
+        "laravel/framework": "^9.33",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "spatie/simple-excel": "^3.2"

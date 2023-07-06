@@ -43,11 +43,11 @@
 </template>
 
 <script lang="ts">
-import InputError from "@/views/components/forms/InputError.vue"
-import InputLimbu from "@/views/components/forms/InputLimbu.vue"
-import {InertiaForm, Link, useForm} from "@inertiajs/inertia-vue3"
+import InputError from "@/components/forms/InputError.vue"
+import InputLimbu from "@/components/forms/InputLimbu.vue"
+import {InertiaForm, Link, useForm} from '@inertiajs/vue3'
 import {defineComponent, PropType, watch} from "vue"
-import Layout from "../../../layouts/default.vue"
+import Layout from "@/Layouts/Default.vue"
 
 export default defineComponent({
     components: {InputLimbu, InputError, Link},
@@ -83,7 +83,12 @@ export default defineComponent({
         }, {immediate: true, deep: true})
 
         const submit = () => {
-            form.put(`/translations/${props.translation.id}`)
+            form.put(`/translations/${props.translation.id}`, {
+                preserveState: true,
+                onSuccess:()=>{
+
+                }
+            })
         }
 
         return {

@@ -14,7 +14,7 @@ class TranslationController extends Controller
         $translations = Translation::query()->paginate(10);
 
         return inertia('admin/Translation/Index', [
-            "translations" => $translations
+            "translations"      => $translations,
         ]);
     }
 
@@ -41,9 +41,9 @@ class TranslationController extends Controller
 
         return inertia('admin/Translation/Edit', [
             "translation" => [
-                'id'    => $translation->id,
-                'english' => $translation->english ?? '',
-                'limbu' => $translation->limbu ?? '',
+                'id'            => $translation->id,
+                'english'       => $translation->english ?? '',
+                'limbu'         => $translation->limbu ?? '',
                 'pronunciation' => $translation->pronunciation ?? '',
             ]
         ]);
